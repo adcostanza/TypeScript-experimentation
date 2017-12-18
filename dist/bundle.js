@@ -184,7 +184,7 @@ var TodoItem = /** @class */ (function (_super) {
         console.log(this.state);
     };
     TodoItem.prototype.render = function () {
-        return React.createElement("div", { className: this.state.complete ? "complete" : null, onClick: this.activate.bind(this) },
+        return React.createElement("div", { className: (this.state.complete ? "complete" : null) + " todoItem", onClick: this.activate.bind(this) },
             this.props.description,
             " ",
             React.createElement("i", null, this.props.expectedTime));

@@ -19,7 +19,7 @@ export class TodoItem extends React.Component<TodoItemProps, TodoItemState> {
     console.log(this.state);
   }
   render() {
-    return <div className={this.state.complete ? "complete": null} onClick={this.activate.bind(this)}>
+    return <div className={`${this.state.complete ? "complete ": ""}todoItem`} onClick={this.activate.bind(this)}>
       {this.props.description} <i>{this.props.expectedTime}</i>
     </div>;
   }
