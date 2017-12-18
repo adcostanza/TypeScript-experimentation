@@ -25,7 +25,7 @@ module.exports = {
                 test:/\.css$/,
                 use: ExtractTextPlugin.extract({
                         fallback:'style-loader',
-                        use:['css-loader'],
+                        use:['css-loader?modules&importLoaders=1&sourceMap&localIdentName=[local]___[hash:base64:5]'],
                     })
             },
             { enforce: "pre", test: /\.js$/, loader: "source-map-loader" }

@@ -1,5 +1,5 @@
 import * as React from "react";
-require('./todo.css');
+const style = require('./todo.css');
 require("./test.css");
 export interface TodoItemProps {
   description: string;
@@ -19,7 +19,7 @@ export class TodoItem extends React.Component<TodoItemProps, TodoItemState> {
     console.log(this.state);
   }
   render() {
-    return <div className={`${this.state.complete ? "complete ": ""}todoItem`} onClick={this.activate.bind(this)}>
+    return <div className={[this.state.complete ? style.complete: null, style.todoItem].join(" ")} onClick={this.activate.bind(this)}>
       {this.props.description} <i>{this.props.expectedTime}</i>
     </div>;
   }
