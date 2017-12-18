@@ -75,11 +75,30 @@ module.exports = React;
 
 "use strict";
 
+var __assign = (this && this.__assign) || Object.assign || function(t) {
+    for (var s, i = 1, n = arguments.length; i < n; i++) {
+        s = arguments[i];
+        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+            t[p] = s[p];
+    }
+    return t;
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
 var ReactDOM = __webpack_require__(2);
-var Hello_1 = __webpack_require__(3);
-ReactDOM.render(React.createElement(Hello_1.Hello, { compiler: "TypeScript", framework: "React" }), document.getElementById("example"));
+var TodoList_1 = __webpack_require__(3);
+var todos = [{
+        description: "Clean the kitchen",
+        expectedTime: "20 minutes"
+    },
+    {
+        description: "Dishes",
+        expectedTime: "5 minutes"
+    }];
+var todoList = {
+    todos: todos
+};
+ReactDOM.render(React.createElement(TodoList_1.TodoList, __assign({}, todoList)), document.getElementById("app-root"));
 
 
 /***/ }),
@@ -104,30 +123,72 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
+var __assign = (this && this.__assign) || Object.assign || function(t) {
+    for (var s, i = 1, n = arguments.length; i < n; i++) {
+        s = arguments[i];
+        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+            t[p] = s[p];
+    }
+    return t;
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
-// 'HelloProps' describes the shape of props.
-// State is never set so we use the '{}' type.
-var Hello = /** @class */ (function (_super) {
-    __extends(Hello, _super);
-    function Hello() {
+var TodoItem_1 = __webpack_require__(4);
+var TodoList = /** @class */ (function (_super) {
+    __extends(TodoList, _super);
+    function TodoList() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    Hello.prototype.render = function () {
-        return React.createElement("div", null,
-            React.createElement("h1", null,
-                "Hello from ",
-                this.props.compiler,
-                " and ",
-                this.props.framework,
-                "!"),
-            React.createElement("b", null,
-                "My state is ",
-                this.state.loading));
+    TodoList.prototype.render = function () {
+        var TodoItems = this.props.todos.map(function (todo, i) {
+            return React.createElement(TodoItem_1.TodoItem, __assign({}, todo, { key: i }));
+        });
+        return React.createElement("div", { className: "todoList" }, TodoItems);
     };
-    return Hello;
+    return TodoList;
 }(React.Component));
-exports.Hello = Hello;
+exports.TodoList = TodoList;
+
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = __webpack_require__(0);
+__webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./todo.css\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+var TodoItem = /** @class */ (function (_super) {
+    __extends(TodoItem, _super);
+    function TodoItem(props) {
+        var _this = _super.call(this, props) || this;
+        _this.state = { complete: false };
+        return _this;
+    }
+    TodoItem.prototype.activate = function () {
+        this.state = { complete: !this.state.complete };
+        console.log(this.state);
+    };
+    TodoItem.prototype.render = function () {
+        return React.createElement("div", { className: this.state.complete ? "complete" : null, onClick: this.activate.bind(this) },
+            this.props.description,
+            " ",
+            React.createElement("i", null, this.props.expectedTime));
+    };
+    return TodoItem;
+}(React.Component));
+exports.TodoItem = TodoItem;
 
 
 /***/ })
