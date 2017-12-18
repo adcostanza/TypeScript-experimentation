@@ -94,7 +94,12 @@ var todos = [{
     {
         description: "Dishes",
         expectedTime: "5 minutes"
-    }];
+    },
+    {
+        description: "Eat a taco",
+        expectedTime: "2 seconds"
+    }
+];
 var todoList = {
     todos: todos
 };
@@ -168,7 +173,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
-__webpack_require__(5);
+var style = __webpack_require__(5);
 __webpack_require__(6);
 var TodoItem = /** @class */ (function (_super) {
     __extends(TodoItem, _super);
@@ -184,7 +189,7 @@ var TodoItem = /** @class */ (function (_super) {
         console.log(this.state);
     };
     TodoItem.prototype.render = function () {
-        return React.createElement("div", { className: (this.state.complete ? "complete" : null) + " todoItem", onClick: this.activate.bind(this) },
+        return React.createElement("div", { className: [this.state.complete ? style.complete : null, style.todoItem].join(" "), onClick: this.activate.bind(this) },
             this.props.description,
             " ",
             React.createElement("i", null, this.props.expectedTime));
@@ -199,6 +204,7 @@ exports.TodoItem = TodoItem;
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+module.exports = {"complete":"complete___1niVH","todoItem":"todoItem___csxqE"};
 
 /***/ }),
 /* 6 */
