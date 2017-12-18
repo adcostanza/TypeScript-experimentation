@@ -168,7 +168,8 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
-__webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./todo.css\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+__webpack_require__(5);
+__webpack_require__(6);
 var TodoItem = /** @class */ (function (_super) {
     __extends(TodoItem, _super);
     function TodoItem(props) {
@@ -177,7 +178,9 @@ var TodoItem = /** @class */ (function (_super) {
         return _this;
     }
     TodoItem.prototype.activate = function () {
-        this.state = { complete: !this.state.complete };
+        this.setState(function (prevState, props) {
+            return { complete: !prevState.complete };
+        });
         console.log(this.state);
     };
     TodoItem.prototype.render = function () {
@@ -190,6 +193,18 @@ var TodoItem = /** @class */ (function (_super) {
 }(React.Component));
 exports.TodoItem = TodoItem;
 
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);
